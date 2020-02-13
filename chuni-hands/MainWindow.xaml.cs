@@ -15,7 +15,7 @@ namespace chuni_hands {
         private const string ConfigFile = "chuni-hands.json";
 
         private VideoCapture _capture;
-        private readonly List<Sensor> _sensors = new List<Sensor>(5);
+        private readonly List<Sensor> _sensors = new List<Sensor>(6);
         private readonly Mat _mat = new Mat();
         private byte[] _matData = new byte[0];
         private bool _hasPendingReset = false;
