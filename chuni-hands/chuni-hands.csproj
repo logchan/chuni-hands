@@ -89,6 +89,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ChuniCanvas.cs" />
+    <Compile Include="ChuniIO.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="Logger.cs" />

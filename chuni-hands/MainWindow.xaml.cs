@@ -81,10 +81,14 @@ namespace chuni_hands {
 
             switch (_config.SendKeyMode) {
                 case "be": {
-                        var airKeys = String.Concat(from sensor in _sensors select sensor.Active ? "1" : "0");
-                        _http.GetAsync(_config.EndPoint + "?k=" + airKeys);
-                    }
+                    var airKeys = String.Concat(from sensor in _sensors select sensor.Active ? "1" : "0");
+                    _http.GetAsync(_config.EndPoint + "?k=" + airKeys);
                     break;
+                }
+                case "chuni_io": {
+                    ChuniIO.Send(_sensors);
+                    break;
+                }
                 default:
                     throw new Exception("unknown SendKeyMode");
             }
