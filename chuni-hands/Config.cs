@@ -7,7 +7,7 @@
         public double Threshold { get; set; } = 10;
         public int Distance { get; set; } = 40;
 
-        public int BoostrapSeconds { get; set; } = 2;
+        public int BootstrapSeconds { get; set; } = 2;
         public int CaptureWidth { get; set; } = 640;
         public int CaptureHeight { get; set; } = 480;
         public int Fps { get; set; } = 60;

@@ -115,7 +115,7 @@ namespace chuni_hands {
 
         private void CaptureLoop() {
             // give camera some time to auto adjust, so user don't need to press reset right after start
-            var bootstrapFrames = _config.BoostrapSeconds * _config.Fps;
+            var bootstrapFrames = _config.BootstrapSeconds * _config.Fps;
 
             while (!_closing) {
                 _capture.Read(_mat);
