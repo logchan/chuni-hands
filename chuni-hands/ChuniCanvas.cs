@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace chuni_hands {
     internal sealed class ChuniCanvas : Canvas {
+
+        private const double SensorThickness = 4.0;
 
         public IEnumerable<Sensor> Sensors { get; set; }
 
@@ -61,15 +62,8 @@ namespace chuni_hands {
                 var x = paddingX + (sensor.X - sz / 2) * factor;
                 var y = paddingY + (sensor.Y - sz / 2) * factor;
 
-                dc.DrawRectangle(brush, null, new Rect(x, y, sz * factor, sz * factor));
-
-                /*
-                // draw sensor id for debug
-                var type = new Typeface("Microsoft YaHei");
-                dc.DrawText(new FormattedText(sensor.Id.ToString(), 
-                    CultureInfo.CurrentCulture, FlowDirection.LeftToRight, type, 12, Brushes.White, 96), 
-                    new Point(x, y));
-                    */
+                dc.DrawRectangle(null, new Pen(brush, SensorThickness), 
+                    new Rect(x - SensorThickness / 2, y - SensorThickness / 2, sz * factor + SensorThickness, sz * factor + SensorThickness));
             }
         }
     }
