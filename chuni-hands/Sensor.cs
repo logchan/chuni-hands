@@ -11,8 +11,8 @@ namespace chuni_hands {
         public int Size => _config.SensorSize;
 
         private Mat _startValue;
-        private Config _config;
-        private int _id;
+        private readonly Config _config;
+        private readonly int _id;
 
         public Sensor(int id, Config config) {
             _id = id;

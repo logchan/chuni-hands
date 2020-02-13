@@ -15,16 +15,16 @@ namespace chuni_hands {
         private const string ConfigFile = "chuni-hands.json";
 
         private VideoCapture _capture;
-        private Config _config = new Config();
-        private volatile bool _closing = false;
+        private readonly List<Sensor> _sensors = new List<Sensor>(5);
         private readonly Mat _mat = new Mat();
         private byte[] _matData = new byte[0];
-        private readonly List<Sensor> _sensors = new List<Sensor>(5);
-        private Task _captureTask;
         private bool _hasPendingReset = false;
-        private HttpClient _http = new HttpClient();
 
-        public Config Config => _config;
+        private Task _captureTask;
+        private volatile bool _closing = false;
+
+        private readonly Config _config = new Config();
+        private readonly HttpClient _http = new HttpClient();
 
         public MainWindow() {
             if (File.Exists(ConfigFile)) {

@@ -20,7 +20,7 @@ namespace chuni_hands {
                 data[i] = (byte) (sensors[i].Active ? 0x80 : 0x00);
             }
 
-            _accessor.WriteArray<byte>(0, data, 0, 6);
+            _accessor.WriteArray(0, data, 0, 6);
         }
 
         private static void Initialize() {
