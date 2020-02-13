@@ -152,6 +152,10 @@ namespace chuni_hands {
         private void SetThresholdButton_Click(object sender, RoutedEventArgs e) {
             if (Double.TryParse(ThresholdBox.Text, out var v)) {
                 _config.Threshold = v;
+                Logger.Info($"Threshold = {v}");
+            }
+            else {
+                Logger.Error("Invalid input");
             }
         }
 
