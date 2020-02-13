@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -57,8 +58,18 @@ namespace chuni_hands {
             foreach (var sensor in Sensors) {
                 var brush = sensor.Active ? Brushes.Green : Brushes.Red;
                 var sz = sensor.Size;
-                
-                dc.DrawRectangle(brush, null, new Rect(paddingX + (sensor.X - sz / 2) * factor, paddingY + (sensor.Y - sz / 2) * factor, sz * factor, sz * factor));
+                var x = paddingX + (sensor.X - sz / 2) * factor;
+                var y = paddingY + (sensor.Y - sz / 2) * factor;
+
+                dc.DrawRectangle(brush, null, new Rect(x, y, sz * factor, sz * factor));
+
+                /*
+                // draw sensor id for debug
+                var type = new Typeface("Microsoft YaHei");
+                dc.DrawText(new FormattedText(sensor.Id.ToString(), 
+                    CultureInfo.CurrentCulture, FlowDirection.LeftToRight, type, 12, Brushes.White, 96), 
+                    new Point(x, y));
+                    */
             }
         }
     }

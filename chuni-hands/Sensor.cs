@@ -9,6 +9,7 @@ namespace chuni_hands {
         public bool Active { get; private set; }
         public bool StateChanged { get; private set; }
         public int Size => _config.SensorSize;
+        public int Id => _id;
 
         private Mat _startValue;
         private readonly Config _config;
@@ -31,7 +32,7 @@ namespace chuni_hands {
             X = _config.CaptureWidth / 2 + _config.OffsetX;
             X = Math.Max(Math.Min(X, _config.CaptureWidth - _config.SensorSize), _config.SensorSize);
 
-            Y = _config.CaptureHeight / 2 + _config.OffsetY + (_id - 3) * _config.Distance;
+            Y = _config.CaptureHeight - (_config.CaptureHeight / 2 + _config.OffsetY + _id * _config.Distance);
             Y = Math.Max(Math.Min(Y, _config.CaptureHeight - _config.SensorSize), _config.SensorSize);
 
             // check area
