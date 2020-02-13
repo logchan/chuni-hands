@@ -45,6 +45,21 @@ namespace chuni_hands {
             else {
                 dc.DrawRectangle(Brushes.LightGray, null, imageRect);
             }
+
+            DrawSensors(dc, factor, paddingX, paddingY);
+        }
+
+        private void DrawSensors(DrawingContext dc, double factor, double paddingX, double paddingY) {
+            if (Sensors == null) {
+                return;
+            }
+
+            foreach (var sensor in Sensors) {
+                var brush = sensor.Active ? Brushes.Green : Brushes.Red;
+                var sz = sensor.Size;
+                
+                dc.DrawRectangle(brush, null, new Rect(paddingX + (sensor.X - sz / 2) * factor, paddingY + (sensor.Y - sz / 2) * factor, sz * factor, sz * factor));
+            }
         }
     }
 }

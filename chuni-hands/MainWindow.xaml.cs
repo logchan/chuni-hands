@@ -52,10 +52,6 @@ namespace chuni_hands {
             }
             _hasPendingReset = false;
 
-            foreach (var sensor in _sensors) {
-                sensor.Draw(_mat);
-            }
-
             // send key
 
             SendKey();

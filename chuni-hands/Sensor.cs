@@ -6,8 +6,9 @@ namespace chuni_hands {
     internal sealed class Sensor {
         public int X { get; private set; }
         public int Y { get; private set; }
-        public bool Active { get; set; }
-        public bool StateChanged { get; set; }
+        public bool Active { get; private set; }
+        public bool StateChanged { get; private set; }
+        public int Size => _config.SensorSize;
 
         private Mat _startValue;
         private Config _config;
@@ -60,23 +61,6 @@ namespace chuni_hands {
             var active = diff > _config.Threshold;
             StateChanged = active != Active;
             Active = active;
-        }
-
-        public void Draw(Mat frame) {
-            var pixels = GetPartial(frame);
-            var color = new byte[] { 0, 0, 0 };
-            if (Active) {
-                color[0] = 255;
-            }
-            else {
-                color[2] = 255;
-            }
-
-            for (var y = 0; y < pixels.Rows; ++y) {
-                for (var x = 0; x < pixels.Cols; ++x) {
-                    pixels.Row(y).Col(x).SetTo(color);
-                }
-            }
         }
     }
 }
