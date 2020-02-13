@@ -1,4 +1,6 @@
-﻿namespace chuni_hands {
+﻿using Newtonsoft.Json;
+
+namespace chuni_hands {
     public sealed class Config : Helpers.PropertyChangedInvoker {
         static Config() {
             Helpers.PatchNotifyPropertyChanged<Config>();
@@ -19,5 +21,8 @@
         public string SendKeyMode { get; set; } = "be";
         public string EndPoint { get; set; } = "http://10.233.3.22:4420/update_air";
         public bool ShowVideo { get; set; } = true;
+
+        [JsonIgnore]
+        public bool FreezeVideo { get; set; }
     }
 }

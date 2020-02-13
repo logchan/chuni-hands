@@ -39,6 +39,7 @@
                 </DockPanel>
                 <Button x:Name="CenterButton" Click="CenterButton_Click">Center</Button>
                 <CheckBox IsChecked="{Binding Path=LogDiff, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Log diff</CheckBox>
+                <ToggleButton IsChecked="{Binding Path=FreezeVideo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Freeze</ToggleButton>
             </StackPanel>
             
             <RichTextBox DockPanel.Dock="Bottom" x:Name="LogBox">

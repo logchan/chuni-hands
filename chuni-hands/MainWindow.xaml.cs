@@ -118,11 +118,15 @@ namespace chuni_hands {
             var bootstrapFrames = _config.BootstrapSeconds * _config.Fps;
 
             while (!_closing) {
-                _capture.Read(_mat);
                 if (bootstrapFrames > 0) {
+                    _capture.Read(_mat);
                     --bootstrapFrames;
                 }
                 else {
+                    if (!_config.FreezeVideo) {
+                        _capture.Read(_mat);
+                    }
+
                     Dispatcher?.BeginInvoke(new Action(FrameUpdate));
                 }
 
