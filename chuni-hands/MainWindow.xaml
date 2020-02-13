@@ -7,18 +7,19 @@
         mc:Ignorable="d" x:Name="TheWindow"
         Title="chuni-hands" Height="720" Width="1280"
         Loaded="Window_Loaded" Closing="Window_Closing">
-    <Grid>
+    <Grid DataContext="{Binding ElementName=TheWindow, Path=Config}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" Margin="12">
-            <local:ChuniCanvas x:Name="TheCanvas"></local:ChuniCanvas>
+            <local:ChuniCanvas x:Name="TheCanvas" DrawImage="{Binding Path=ShowVideo}"></local:ChuniCanvas>
         </Grid>
-        <DockPanel Grid.Column="1" LastChildFill="True" DataContext="{Binding ElementName=TheWindow, Path=Config}">
+        <DockPanel Grid.Column="1" LastChildFill="True">
             <StackPanel DockPanel.Dock="Top" Margin="12">
                 <Button x:Name="ResetButton" Click="ResetButton_Click">Reset</Button>
+                <CheckBox IsChecked="{Binding Path=ShowVideo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Video</CheckBox>
                 <DockPanel LastChildFill="True">
                     <TextBlock DockPanel.Dock="Left">Threshold</TextBlock>
                     <Button DockPanel.Dock="Right" x:Name="SetThresholdButton" Click="SetThresholdButton_Click">Set</Button>

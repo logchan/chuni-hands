@@ -17,6 +17,14 @@ namespace chuni_hands {
         public static readonly DependencyProperty ImageProperty =
             DependencyProperty.Register("Image", typeof(ImageSource), typeof(ChuniCanvas), new PropertyMetadata(null));
 
+        public bool DrawImage {
+            get { return (bool)GetValue(DrawImageProperty); }
+            set { SetValue(DrawImageProperty, value); }
+        }
+
+        public static readonly DependencyProperty DrawImageProperty =
+            DependencyProperty.Register("DrawImage", typeof(bool), typeof(ChuniCanvas), new PropertyMetadata(false));
+
         protected override void OnRender(DrawingContext dc) {
             base.OnRender(dc);
 
@@ -29,8 +37,14 @@ namespace chuni_hands {
             factor = Math.Min(factor, ActualHeight / image.Height);
             var paddingX = (ActualWidth - image.Width * factor) / 2;
             var paddingY = (ActualHeight - image.Height * factor) / 2;
+            var imageRect = new Rect(paddingX, paddingY, image.Width * factor, image.Height * factor);
 
-            dc.DrawImage(image, new Rect(paddingX, paddingY, image.Width * factor, image.Height * factor));
+            if (DrawImage) {
+                dc.DrawImage(image, imageRect);
+            }
+            else {
+                dc.DrawRectangle(Brushes.LightGray, null, imageRect);
+            }
         }
     }
 }
