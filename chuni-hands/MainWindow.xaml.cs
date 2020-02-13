@@ -26,6 +26,8 @@ namespace chuni_hands {
         private readonly Config _config = new Config();
         private readonly HttpClient _http = new HttpClient();
 
+        public Config Config => _config;
+
         public MainWindow() {
             if (File.Exists(ConfigFile)) {
                 _config = Helpers.Deserialize<Config>(ConfigFile);
