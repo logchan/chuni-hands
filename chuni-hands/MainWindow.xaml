@@ -16,7 +16,7 @@
         <Grid Grid.Column="0" Margin="12">
             <local:ChuniCanvas x:Name="TheCanvas"></local:ChuniCanvas>
         </Grid>
-        <DockPanel Grid.Column="1" LastChildFill="True">
+        <DockPanel Grid.Column="1" LastChildFill="True" DataContext="{Binding ElementName=TheWindow, Path=Config}">
             <StackPanel DockPanel.Dock="Top" Margin="12">
                 <Button x:Name="ResetButton" Click="ResetButton_Click">Reset</Button>
                 <DockPanel LastChildFill="True">
@@ -26,17 +26,18 @@
                 </DockPanel>
                 <DockPanel LastChildFill="True">
                     <TextBlock DockPanel.Dock="Left">Distance </TextBlock>
-                    <Slider DockPanel.Dock="Right" Value="{Binding ElementName=TheWindow, Path=Config.Distance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="20" Maximum="100"></Slider>
+                    <Slider DockPanel.Dock="Right" Value="{Binding Path=Distance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="20" Maximum="100"></Slider>
                 </DockPanel>
                 <DockPanel LastChildFill="True">
                     <TextBlock DockPanel.Dock="Left">X</TextBlock>
-                    <Slider DockPanel.Dock="Right" Value="{Binding ElementName=TheWindow, Path=Config.OffsetX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="-320" Maximum="320"></Slider>
+                    <Slider DockPanel.Dock="Right" Value="{Binding Path=OffsetX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="-320" Maximum="320"></Slider>
                 </DockPanel>
                 <DockPanel LastChildFill="True">
                     <TextBlock DockPanel.Dock="Left">Y</TextBlock>
-                    <Slider DockPanel.Dock="Right" Value="{Binding ElementName=TheWindow, Path=Config.OffsetY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="-240" Maximum="240"></Slider>
+                    <Slider DockPanel.Dock="Right" Value="{Binding Path=OffsetY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="-240" Maximum="240"></Slider>
                 </DockPanel>
-                <CheckBox IsChecked="{Binding ElementName=TheWindow, Path=Config.LogDiff, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Log diff</CheckBox>
+                <Button x:Name="CenterButton" Click="CenterButton_Click">Center</Button>
+                <CheckBox IsChecked="{Binding Path=LogDiff, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Log diff</CheckBox>
             </StackPanel>
             
             <RichTextBox DockPanel.Dock="Bottom" x:Name="LogBox">

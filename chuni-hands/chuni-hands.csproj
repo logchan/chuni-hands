@@ -57,6 +57,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lib.Harmony.1.2.0.1\lib\net472\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="Emgu.CV.World.Netstandard">
       <HintPath>C:\Emgu\emgucv-windesktop 4.2.0.3662\bin\Emgu.CV.World.Netstandard.dll</HintPath>
     </Reference>

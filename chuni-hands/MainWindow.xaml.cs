@@ -150,5 +150,10 @@ namespace chuni_hands {
                 _config.Threshold = v;
             }
         }
+
+        private void CenterButton_Click(object sender, RoutedEventArgs e) {
+            _config.OffsetX = 0;
+            _config.OffsetY = 0;
+        }
     }
 }

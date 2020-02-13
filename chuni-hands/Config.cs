@@ -1,5 +1,9 @@
 ﻿namespace chuni_hands {
-    public sealed class Config {
+    public sealed class Config : Helpers.PropertyChangedInvoker {
+        static Config() {
+            Helpers.PatchNotifyPropertyChanged<Config>();
+        }
+
         public int OffsetX { get; set; }
         public int OffsetY { get; set; }
         public int Exposure { get; set; } = -6;
