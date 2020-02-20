@@ -97,7 +97,7 @@ namespace chuni_hands {
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            var cap = new VideoCapture();
+            var cap = new VideoCapture(_config.CameraId);
             cap.SetCaptureProperty(Emgu.CV.CvEnum.CapProp.FrameWidth, _config.CaptureWidth);
             cap.SetCaptureProperty(Emgu.CV.CvEnum.CapProp.FrameHeight, _config.CaptureHeight);
             cap.SetCaptureProperty(Emgu.CV.CvEnum.CapProp.Autofocus, 0);
