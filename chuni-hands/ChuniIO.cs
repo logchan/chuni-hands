@@ -9,7 +9,7 @@ namespace chuni_hands {
         public static MemoryMappedViewAccessor _accessor;
 
         private static bool _init = false;
-
+        private static readonly int[] SensorMap = new int[] { 1, 0, 3, 2, 5, 4 };
         public static void Send(IList<Sensor> sensors) {
             if (!_init) {
                 Initialize();
@@ -17,7 +17,7 @@ namespace chuni_hands {
 
             var data = new byte[6];
             for (var i = 0; i < 6; ++i) {
-                data[i] = (byte) (sensors[i].Active ? 0x80 : 0x00);
+                data[SensorMap[i]] = (byte) (sensors[i].Active ? 0x80 : 0x00);
             }
 
             _accessor.WriteArray(0, data, 0, 6);
