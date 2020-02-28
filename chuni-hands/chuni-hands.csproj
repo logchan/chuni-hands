@@ -138,6 +138,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CameraHelper\CameraHelper.vcxproj">
+      <Project>{720d3af0-6a71-422b-8a93-1deece9e330f}</Project>
+      <Name>CameraHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="C:\Emgu\emgucv-windesktop 4.2.0.3662\Emgu.CV.Runtime\Windows\Emgu.CV.Runtime.Windows.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

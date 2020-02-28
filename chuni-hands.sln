@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chuni-hands", "chuni-hands\
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Emgu.CV.Runtime.Windows", "C:\Emgu\emgucv-windesktop 4.2.0.3662\Emgu.CV.Runtime\Windows\Emgu.CV.Runtime.Windows.shproj", "{ADC3C8E5-EBCD-4D3C-B3A4-20CFE0E42FC1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CameraHelper", "CameraHelper\CameraHelper.vcxproj", "{720D3AF0-6A71-422B-8A93-1DEECE9E330F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameraHelperTest", "CameraHelperTest\CameraHelperTest.csproj", "{13F60778-2DF6-4723-BB87-2A433B822307}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		C:\Emgu\emgucv-windesktop 4.2.0.3662\Emgu.CV.Runtime\Windows\Emgu.CV.Runtime.Windows.projitems*{adc3c8e5-ebcd-4d3c-b3a4-20cfe0e42fc1}*SharedItemsImports = 13
@@ -15,18 +19,46 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F1FDD6C6-7B45-403D-9A53-8E9CA600BC3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F1FDD6C6-7B45-403D-9A53-8E9CA600BC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1FDD6C6-7B45-403D-9A53-8E9CA600BC3F}.Debug|x64.ActiveCfg = Debug|x64
 		{F1FDD6C6-7B45-403D-9A53-8E9CA600BC3F}.Debug|x64.Build.0 = Debug|x64
+		{F1FDD6C6-7B45-403D-9A53-8E9CA600BC3F}.Debug|x86.ActiveCfg = Debug|x86
+		{F1FDD6C6-7B45-403D-9A53-8E9CA600BC3F}.Debug|x86.Build.0 = Debug|x86
 		{F1FDD6C6-7B45-403D-9A53-8E9CA600BC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1FDD6C6-7B45-403D-9A53-8E9CA600BC3F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1FDD6C6-7B45-403D-9A53-8E9CA600BC3F}.Release|x64.ActiveCfg = Release|x64
 		{F1FDD6C6-7B45-403D-9A53-8E9CA600BC3F}.Release|x64.Build.0 = Release|x64
+		{F1FDD6C6-7B45-403D-9A53-8E9CA600BC3F}.Release|x86.ActiveCfg = Release|x86
+		{F1FDD6C6-7B45-403D-9A53-8E9CA600BC3F}.Release|x86.Build.0 = Release|x86
+		{720D3AF0-6A71-422B-8A93-1DEECE9E330F}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{720D3AF0-6A71-422B-8A93-1DEECE9E330F}.Debug|x64.ActiveCfg = Debug|x64
+		{720D3AF0-6A71-422B-8A93-1DEECE9E330F}.Debug|x64.Build.0 = Debug|x64
+		{720D3AF0-6A71-422B-8A93-1DEECE9E330F}.Debug|x86.ActiveCfg = Debug|Win32
+		{720D3AF0-6A71-422B-8A93-1DEECE9E330F}.Debug|x86.Build.0 = Debug|Win32
+		{720D3AF0-6A71-422B-8A93-1DEECE9E330F}.Release|Any CPU.ActiveCfg = Release|Win32
+		{720D3AF0-6A71-422B-8A93-1DEECE9E330F}.Release|x64.ActiveCfg = Release|x64
+		{720D3AF0-6A71-422B-8A93-1DEECE9E330F}.Release|x64.Build.0 = Release|x64
+		{720D3AF0-6A71-422B-8A93-1DEECE9E330F}.Release|x86.ActiveCfg = Release|Win32
+		{720D3AF0-6A71-422B-8A93-1DEECE9E330F}.Release|x86.Build.0 = Release|Win32
+		{13F60778-2DF6-4723-BB87-2A433B822307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F60778-2DF6-4723-BB87-2A433B822307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F60778-2DF6-4723-BB87-2A433B822307}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{13F60778-2DF6-4723-BB87-2A433B822307}.Debug|x64.Build.0 = Debug|Any CPU
+		{13F60778-2DF6-4723-BB87-2A433B822307}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{13F60778-2DF6-4723-BB87-2A433B822307}.Debug|x86.Build.0 = Debug|Any CPU
+		{13F60778-2DF6-4723-BB87-2A433B822307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F60778-2DF6-4723-BB87-2A433B822307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13F60778-2DF6-4723-BB87-2A433B822307}.Release|x64.ActiveCfg = Release|x64
+		{13F60778-2DF6-4723-BB87-2A433B822307}.Release|x64.Build.0 = Release|x64
+		{13F60778-2DF6-4723-BB87-2A433B822307}.Release|x86.ActiveCfg = Release|Any CPU
+		{13F60778-2DF6-4723-BB87-2A433B822307}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

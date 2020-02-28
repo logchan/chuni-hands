@@ -16,7 +16,7 @@ namespace chuni_hands {
 
         private VideoCapture _capture;
         private readonly List<Sensor> _sensors = new List<Sensor>(6);
-        private readonly Mat _mat = new Mat();
+        private Mat _mat = new Mat();
         private byte[] _matData = new byte[0];
         private bool _hasPendingReset = false;
 
@@ -33,10 +33,15 @@ namespace chuni_hands {
                 _config = Helpers.Deserialize<Config>(ConfigFile);
             }
 
+            for (var i = 0; i < 6; ++i) {
+                _sensors.Add(new Sensor(i, _config));
+            }
+
             InitializeComponent();
             Title += " version " + Helpers.GetVersion();
 
             TheCanvas.Sensors = _sensors;
+            RefreshCameras();
 
             Logger.LogAdded += log => {
                 LogBox.AppendText(log);
@@ -97,7 +102,32 @@ namespace chuni_hands {
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            var cap = new VideoCapture(_config.CameraId);
+            StartCapture();
+        }
+
+        private void RefreshCameras() {
+            var cameras = CameraHelper.CameraHelper.GetCameras();
+            CameraCombo.Items.Clear();
+            foreach (var cam in cameras) {
+                CameraCombo.Items.Add($"[{cam.Id}] {cam.Name}");
+            }
+
+            if (_config.CameraId >= 0 && _config.CameraId < CameraCombo.Items.Count) {
+                CameraCombo.SelectedIndex = _config.CameraId;
+            }
+            else {
+                _config.CameraId = 0;
+            }
+        }
+
+        private void StartCapture() {
+            var cap = new VideoCapture(_config.CameraId, VideoCapture.API.DShow);
+            if (!cap.IsOpened) {
+                Logger.Error("Failed to start video capture");
+                return;
+            }
+
+            Logger.Info("Video capture started");
             cap.SetCaptureProperty(Emgu.CV.CvEnum.CapProp.FrameWidth, _config.CaptureWidth);
             cap.SetCaptureProperty(Emgu.CV.CvEnum.CapProp.FrameHeight, _config.CaptureHeight);
             cap.SetCaptureProperty(Emgu.CV.CvEnum.CapProp.Autofocus, 0);
@@ -108,11 +138,21 @@ namespace chuni_hands {
             _config.CaptureWidth = _mat.Cols;
             _config.CaptureHeight = _mat.Rows;
 
-            for (var i = 0; i < 6; ++i) {
-                _sensors.Add(new Sensor(i, _config));
-            }
-
             _captureTask = Task.Run(CaptureLoop);
+        }
+
+        private void StopCapture() {
+            Logger.Info("Stopping capture");
+
+            _closing = true;
+            _captureTask?.Wait();
+            _captureTask = null;
+
+            _capture?.Stop();
+            _capture?.Dispose();
+            _capture = null;
+
+            _closing = false;
         }
 
         private void CaptureLoop() {
@@ -138,12 +178,7 @@ namespace chuni_hands {
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
-            _closing = true;
-            _captureTask.Wait();
-
-            _capture.Stop();
-            _capture.Dispose();
-
+            StopCapture();
             Helpers.Serialize(_config, ConfigFile);
         }
 
@@ -164,6 +199,17 @@ namespace chuni_hands {
         private void CenterButton_Click(object sender, RoutedEventArgs e) {
             _config.OffsetX = 0;
             _config.OffsetY = 0;
+        }
+
+        private void SetCameraBtn_Click(object sender, RoutedEventArgs e) {
+            StopCapture();
+
+            _config.CameraId = CameraCombo.SelectedIndex;
+            StartCapture();
+        }
+
+        private void RefreshCameraBtn_Click(object sender, RoutedEventArgs e) {
+            RefreshCameras();
         }
     }
 }

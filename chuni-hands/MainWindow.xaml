@@ -44,6 +44,13 @@
                     <TextBlock DockPanel.Dock="Left">Y</TextBlock>
                     <Slider DockPanel.Dock="Right" Value="{Binding Path=OffsetY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="-240" Maximum="240"></Slider>
                 </DockPanel>
+                <DockPanel LastChildFill="True">
+                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                        <Button x:Name="SetCameraBtn" Click="SetCameraBtn_Click">Set</Button>
+                        <Button x:Name="RefreshCameraBtn" Click="RefreshCameraBtn_Click">Refresh</Button>
+                    </StackPanel>
+                    <ComboBox DockPanel.Dock="Left" x:Name="CameraCombo"></ComboBox>
+                </DockPanel>
                 <Button x:Name="CenterButton" Click="CenterButton_Click">Center</Button>
                 <ToggleButton IsChecked="{Binding Path=FreezeVideo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Freeze</ToggleButton>
                 <ToggleButton IsChecked="{Binding Path=LogDiff, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Log diff</ToggleButton>

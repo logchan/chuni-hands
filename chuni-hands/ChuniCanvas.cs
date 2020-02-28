@@ -30,6 +30,7 @@ namespace chuni_hands {
         protected override void OnRender(DrawingContext dc) {
             base.OnRender(dc);
 
+            dc.DrawRectangle(Brushes.LightGray, null, new Rect(0, 0, ActualWidth, ActualHeight));
             var image = Image;
             if (image == null) {
                 return;
@@ -43,9 +44,6 @@ namespace chuni_hands {
 
             if (DrawImage) {
                 dc.DrawImage(image, imageRect);
-            }
-            else {
-                dc.DrawRectangle(Brushes.LightGray, null, imageRect);
             }
 
             DrawSensors(dc, factor, paddingX, paddingY);
